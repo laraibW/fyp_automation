@@ -4,10 +4,13 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from django.contrib.auth.hashers import check_password
 from django.http import HttpResponse
+from fyp_backend_app.models import Project
 # Create your views here.
 from fyp_backend_app.models import CustomUser,Student,Supervisor
 from fyp_backend_app.models import Request
 from .project_functions import start_project
+
+
 @csrf_exempt
 def create_request(request):
   try:
@@ -75,6 +78,30 @@ def show_all_requests(request):
         "Title": req.title,
         "Description": req.details,
         "Group members":group_members
+      })
+
+    return HttpResponse(json.dumps(all_requests))
+  except Exception as e:
+    print("DEBUG : IN GET ALL REQUESTS ",e)
+    return HttpResponse(json.dumps({"status": "No user found"}))
+
+
+@csrf_exempt
+def show_all_projects(request):
+  data=json.loads(request.body.decode("utf8"))
+  try:
+    #project_status=['Started','Proposal Submitted','Proposal Approved','D1 submitted','D1 approved','D2 submitted','D2 approved','R1 submitted','R1 approved','R2 submitted','R2 approved','Final Project Submitted','Final Project Approved']
+    print("DATA IS",data)
+    user= CustomUser.objects.get(username=data["username"])
+    supervisor=Supervisor.objects.get(supervisor=user)
+    projects=Project.objects.filter(supervisor=supervisor)
+    all_requests=[]
+    for proj in projects:
+
+      all_requests.append({
+        "ID": proj.id,
+        "Title": proj.title,
+
       })
 
     return HttpResponse(json.dumps(all_requests))
