@@ -1,0 +1,79 @@
+.dashboard
+{
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}
+
+.topBar{
+    background-color: rgb(154, 141, 231);
+  }
+  .menu {
+    background-color: grey;
+    width: 220px;
+    height: 400px;
+    padding-top: 0.5px;
+    border-radius: 4px;
+    float: left;
+  }
+  
+  .menuText {
+    text-align: center;
+    padding-bottom: 10px;
+    color: white;
+  }
+  .dashboard
+{
+  
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}
+
+.topBar{
+    background-color: rgb(154, 141, 231);
+  }
+  .menuItems {
+    background-color: white;
+    margin: 18px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 4px;
+  }
+  .main{
+    width: 100%;
+  }
+  
+  .content {
+    vertical-align: top;
+    background-color: grey;
+    border-radius: 4px;
+    font-weight: normal;
+    padding: 10px 10px 10px 10px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 5px #ccc;
+    font-size: 18px;
+    text-align: center;
+    opacity: 2;
+    border: 1px solid; 
+    border-color:rgb(238, 238, 230);
+     box-shadow: 4px 4px 4px 4px rgb(191, 202, 202);
+
+  }
+  
+ 
+  .SPname1{
+    text-align: center;
+    color: white;
+  }
+  .SPname{
+    text-align: left;
+  }
+  .SPemail {
+    padding-bottom: 1px;
+  }
+  
+  .SPAllinfo {
+    color: white;
+    text-align: left;
+  }

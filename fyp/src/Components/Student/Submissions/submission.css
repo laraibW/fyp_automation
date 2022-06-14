@@ -1,0 +1,59 @@
+.dashboard
+{
+  
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}
+
+.topBar{
+    background-color: rgb(154, 141, 231);
+  }
+  .AppS{
+    opacity: 2;
+    border: 1px solid; 
+    background-color: gray;
+    border-color:rgb(238, 238, 230);
+     box-shadow: 4px 4px 4px 4px rgb(191, 202, 202);
+   width:50%;
+   margin:10px;
+   
+}
+
+.farm{
+    margin: 10px;
+    padding:2px;
+  
+}
+
+.submitText{
+font-size: 38px;
+font-weight: bold;
+margin:8px;
+float:left;
+}
+
+.inp{
+ margin-left: 70px;
+}
+.inp1{
+  margin-left: 40px;
+}
+.lebal{
+    font-size: 26px;
+    font-weight: normal;
+    margin: 8px;
+    align-content: left;
+}
+
+
+.btnSubmit{
+   font-weight: bold;
+   float: right;
+   margin:10px;
+}
+
+
+
+
+

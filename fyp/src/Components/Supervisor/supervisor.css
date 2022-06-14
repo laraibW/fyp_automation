@@ -1,0 +1,75 @@
+.dashboard
+{
+  
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}
+
+.topBar{
+    background-color: rgb(154, 141, 231);
+  }
+  
+  .table{
+    opacity: 2;
+    margin:10px 10px 10px 10px;
+    border: 1px solid; 
+    background-color: white;
+    border-color:rgb(238, 238, 230);
+     box-shadow: 4px 4px 4px 4px rgb(191, 202, 202);
+    width: 98%;
+    
+  }
+  .item{
+    background-color: gray;
+    font-weight: normal;
+    color: white;
+}
+.display-4{
+  color: white;
+}
+.marks{
+  background-color: rgb(226, 164, 206);
+      float:right;
+      margin-top: 2px;
+      margin-bottom: 10px;
+      margin-right: 10px;
+      font-size: 22px;
+      border-radius: 5px;
+      padding: 5px;
+}
+.marks{
+  background-color: rgb(226, 164, 206);
+  float:right;
+  margin:10px;
+  font-size: 22px;
+  border-radius: 5px;
+  padding: 5px;
+}
+  .data2{
+    padding:10px 10px 10px 10px;
+    vertical-align: top;
+    background-color: grey;
+    border-radius: 4px;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 5px #ccc;
+    font-size: 18px;
+    opacity: 2;
+    border: 1px solid; 
+    border-color:rgb(238, 238, 230);
+     box-shadow: 4px 4px 4px 4px rgb(191, 202, 202);
+   
+  }
+
+  .table2{
+    opacity: 2;
+    border: 1px solid; 
+    background-color: white;
+    border-color:rgb(238, 238, 230);
+     box-shadow: 4px 4px 4px 4px rgb(191, 202, 202);
+    width: 100%;
+    
+  }
+
+

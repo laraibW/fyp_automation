@@ -1,0 +1,58 @@
+.table1{
+  background-color: gray;
+  text-align: center;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 4px 4px 4px 4px rgb(191, 202, 202);
+  opacity: 2;
+  border: 1px solid black;
+  margin: 0 auto;
+  width: 95%;
+  }
+  .dashboard
+  {
+    
+    text-align: center;
+    color: white;
+    font-size: 20px;
+  }
+  .tdData{
+    padding: 8px;
+  }
+  .topBar{
+      background-color: rgb(154, 141, 231);
+     
+    }
+    .buttn{
+      background-color: rgb(6, 107, 67);
+      float:right;
+      color: white;
+      margin:10px;
+      font-size: 22px;
+      border-radius: 5px;
+      padding: 5px;
+      cursor: pointer;
+    }
+    .buttn1{
+      background-color: rgb(202, 6, 6);
+      float:right;
+      color: white;
+      margin:10px;
+      font-size: 22px;
+      border-radius: 5px;
+      padding: 5px;
+      cursor: pointer;
+    }
+    .buttn2{
+      background-color: rgb(119, 131, 8);
+      float:right;
+      color: white;
+      margin-right: 33px;
+      margin-left: 10px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-size: 22px;
+      border-radius: 5px;
+      padding: 5px;
+      cursor: pointer;
+    }

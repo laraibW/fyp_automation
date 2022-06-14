@@ -1,0 +1,26 @@
+.dashboard
+{
+  
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}
+
+.topBar{
+    background-color: rgb(154, 141, 231);
+  }
+  .tableC{
+    border:2;
+    background-color: gray;
+    text-align: center;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 4px 4px 4px 4px rgb(191, 202, 202);
+    opacity: 2;
+    font-size: 25px;
+    margin: 0 auto;
+    width: 70%;
+    }
+    .tdData{
+        padding: 15px;
+      }

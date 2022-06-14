@@ -1,0 +1,71 @@
+const MarksSheetList=[
+{
+    key:1,
+    projectId:"Bcsf18M-112",
+    Proposal:"80",
+    D1:"70",
+    D2:"80",
+    R1:"90",
+    R2:"80",
+    Capstone1:"A",
+    Capstone2:"A-"
+},
+{
+    key:2,
+    projectId:"Bcsf18M-113",
+    Proposal:"80",
+    D1:"70",
+    D2:"80",
+    R1:"90",
+    R2:"80",
+    Capstone1:"A",
+    Capstone2:"A-"
+},
+{
+    key:3,
+    projectId:"Bcsf18M-114",
+    Proposal:"80",
+    D1:"70",
+    D2:"80",
+    R1:"90",
+    R2:"80",
+    Capstone1:"A",
+    Capstone2:"A-"
+},
+{
+    key:4,
+    projectId:"Bcsf18M-115",
+    Proposal:"80",
+    D1:"70",
+    D2:"80",
+    R1:"90",
+    R2:"80",
+    Capstone1:"A",
+    Capstone2:"A-"
+},
+{
+    key:5,
+    projectId:"Bcsf18M-116",
+    Proposal:"80",
+    D1:"70",
+    D2:"80",
+    R1:"90",
+    R2:"80",
+    Capstone1:"A",
+    Capstone2:"A-"
+},
+{
+    key:6,
+    projectId:"Bcsf18M-117",
+    Proposal:"80",
+    D1:"70",
+    D2:"80",
+    R1:"90",
+    R2:"80",
+    Capstone1:"A",
+    Capstone2:"A-"
+}
+
+
+];
+export default MarksSheetList;

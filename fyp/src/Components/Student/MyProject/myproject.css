@@ -1,0 +1,36 @@
+.table{
+    opacity: 2;
+    border: 1px solid; 
+    background-color: gray;
+    border-color:rgb(238, 238, 230);
+     box-shadow: 4px 4px 4px 4px rgb(191, 202, 202);
+   
+  }
+  .divMain{
+     margin-left: 10px;
+     margin-right: 10px;
+  }
+  .heading{
+    color: white;
+    font-size: 30px;
+  }
+  .blockquote
+  {
+    color: white;
+  }
+  .dashboard
+{
+  
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}
+
+.topBar{
+    background-color: rgb(154, 141, 231);
+   
+  }
+  .hr{
+    color: white;
+    border: 0px solid;
+  }

@@ -1,0 +1,30 @@
+.item{
+    background-color: gray;
+    font-weight: normal;
+    color: white;
+    margin: 18px;
+}
+.dashboard
+{
+  
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}
+
+.topBar{
+    background-color: rgb(154, 141, 231);
+   
+  }
+  .data{
+      text-align: left;
+      margin-left: 17%;
+      font-family: serif;
+      font-size: 22px;
+  }
+  .form-control{
+      text-align: justify;
+      font-family: serif;
+      font-size: 20px;
+  }
+  
