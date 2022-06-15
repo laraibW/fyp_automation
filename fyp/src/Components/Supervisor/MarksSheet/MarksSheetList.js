@@ -65,7 +65,5 @@ const MarksSheetList=[
     Capstone1:"A",
     Capstone2:"A-"
 }
-
-
 ];
 export default MarksSheetList;

@@ -1,8 +1,26 @@
 import StudentIds from './StudentsIds';
-import SupervisorsIds from './SupervisorsIds';
+import SupervisorsIds from "./SupervisorsIds";
 import './admin.css';
+import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 function Admin(props){
+  const [studenst,setStudents]=useState([])
+  function getStudents(){
+
+  }
+
+
+  useEffect(()=>{
+    let res=fetch("http://127.0.0.1:8000/get-all-students",{
+      method:"GET",
+      headers:{"Content":"application/json"},
+    }).then(data => data.json()).catch(err=>{
+      console.log(err)
+      //setStudents(data)
+    })
+    console.log("res is",res)
+  })
+
     return(
         <div>
               <div className="topBar">
@@ -32,7 +50,7 @@ function Admin(props){
                <div className='buttnC' >ChangePswd</div>
                <div className='buttnR' >ResetPswd</div>
                </td>
-            
+
             </tr>
               </table>
               </div>
@@ -54,7 +72,7 @@ function Admin(props){
                <div className='buttnC' >ChangePswd</div>
                <div className='buttnR' >ResetPswd</div>
                </td>
-              
+
             </tr>
               </table>
               </div>

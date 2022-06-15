@@ -1,12 +1,13 @@
 from asyncore import read
+from decimal import Decimal
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 import json
 from django.contrib.auth.hashers import check_password
 from django.http import HttpResponse
 # Create your views here.
-from fyp_backend_app.models import CustomUser,Student,Supervisor
-from fyp_backend_app.models import Request
+from fyp_backend_app.models import CustomUser, Project,Student,Supervisor
+from fyp_backend_app.models import Request,Deliverable
 from .project_functions import start_project
 @csrf_exempt
 def create_request(request):
@@ -66,7 +67,7 @@ def show_all_requests(request):
       all_students= Student.objects.filter(request=req)
       for student in all_students:
         group_members.append({
-          "name": student.student.first_name+ " "+ student.student.last_name,
+          "name": student.student.first_name+ " " + student.student.last_name,
           "roll no":student.student.username,
           "email": student.student.email,
         })
@@ -75,6 +76,57 @@ def show_all_requests(request):
         "Title": req.title,
         "Description": req.details,
         "Group members":group_members
+      })
+
+    return HttpResponse(json.dumps(all_requests))
+  except Exception as e:
+    print("DEBUG : IN GET ALL REQUESTS ",e)
+    return HttpResponse(json.dumps({"status": "No user found"}))
+
+@csrf_exempt
+def get_request(request):
+  data=json.loads(request.body.decode("utf8"))
+  try:
+    req=Request.objects.get(id=data["id"])
+    group_members=[]
+    all_students= Student.objects.filter(request=req)
+    for student in all_students:
+      group_members.append({
+        "name": student.student.first_name+ " " + student.student.last_name,
+        "roll_no":student.student.username,
+        "email": student.student.email,
+      })
+    result={
+      "id": req.id,
+      "title": req.title,
+      "description": req.details,
+      "group_members":group_members
+    }
+
+    return HttpResponse(json.dumps(result))
+  except Exception as e:
+    print("DEBUG : IN GET ALL REQUESTS ",e)
+    return HttpResponse(json.dumps({"status": "No user found"}))
+
+
+
+
+
+@csrf_exempt
+def show_all_projects(request):
+  data=json.loads(request.body.decode("utf8"))
+  try:
+    #project_status=['Started','Proposal Submitted','Proposal Approved','D1 submitted','D1 approved','D2 submitted','D2 approved','R1 submitted','R1 approved','R2 submitted','R2 approved','Final Project Submitted','Final Project Approved']
+    user= CustomUser.objects.get(username=data["username"])
+    supervisor=Supervisor.objects.get(supervisor=user)
+    projects=Project.objects.filter(supervisor=supervisor)
+    all_requests=[]
+    for proj in projects:
+
+      all_requests.append({
+        "ID": proj.id,
+        "Title": proj.title,
+
       })
 
     return HttpResponse(json.dumps(all_requests))
@@ -120,10 +172,11 @@ def get_project_details(request):
     project_status=['Started','Proposal Submitted','Proposal Approved','D1 submitted','D1 approved','D2 submitted','D2 approved','R1 submitted','R1 approved','R2 submitted','R2 approved','Final Project Submitted','Final Project Approved']
     data=json.loads(request.body.decode("utf8"))
     user=CustomUser.objects.get(username=data["username"])
-    student=Student.objects.get(user=user)
+    student=Student.objects.get(student=user)
     project=student.project
     team_members=[]
     all_students=Student.objects.filter(project=project)
+    print("DEBUG : ALL Students are :",all_students)
     for student in all_students:
       team_members.append({
         "Roll no": student.student.username,
@@ -140,7 +193,7 @@ def get_project_details(request):
       "Title": project.title,
       "team_members": team_members,
       "supervisor": supervisor,
-      "status": project.status[project.status],
+      "status": project_status[project.status],
       "score": project.total_grade
     }
 
@@ -148,3 +201,75 @@ def get_project_details(request):
   except Exception as e:
     print("DEBUG : Error is ", str(e))
     return HttpResponse(json.dumps({"status": "Error"}))
+
+@csrf_exempt
+def get_project_details(request):
+  try:
+    project_status=['Started','Proposal Submitted','Proposal Approved','D1 submitted','D1 approved','D2 submitted','D2 approved','R1 submitted','R1 approved','R2 submitted','R2 approved','Final Project Submitted','Final Project Approved']
+    data=json.loads(request.body.decode("utf8"))
+    #user=CustomUser.objects.get(username=data["id"])
+    #student=Student.objects.get(student=user)
+    project=Project.objects.get(id= data["id"])
+    team_members=[]
+    all_students=Student.objects.filter(project=project)
+    print("DEBUG : ALL Students are :",all_students)
+    for student in all_students:
+      team_members.append({
+        "Roll no": student.student.username,
+        "name": student.student.first_name+ " "+student.student.last_name,
+        "email": student.student.email
+      })
+    supervisor={
+      "name":f"{project.supervisor.supervisor.first_name} {project.supervisor.supervisor.last_name} ({project.supervisor.designation})",
+      "details":project.supervisor.details,
+      "email":project.supervisor.supervisor.email
+
+    }
+    result={
+      "Title": project.title,
+      "team_members": team_members,
+      "supervisor": supervisor,
+      "status": project_status[project.status],
+      "score": project.total_grade
+    }
+
+    return HttpResponse(json.dumps(result))
+  except Exception as e:
+    print("DEBUG : Error is ", str(e))
+    return HttpResponse(json.dumps({"status": "Error"}))
+
+
+
+
+@csrf_exempt
+def get_marksheet(request):
+  data=json.loads(request.body.decode("utf8"))
+  user=CustomUser.objects.get(username=data["username"])
+  student=Student.objects.get(student=user)
+  project=student.project
+  deliverables = Deliverable.objects.filter(project=project)
+  marks=[project.id,0,0,0,0,0,0,0]
+  i=1
+  for deliverable in deliverables:
+    marks[i]=round(deliverable.score)
+    i+=1
+  return HttpResponse(json.dumps(marks))
+
+@csrf_exempt
+def get_supervisor_marksheet(request):
+  data = json.loads(request.body.decode("utf8"))
+  user = CustomUser.objects.get(username=data["username"])
+  supervisor = Supervisor.objects.get(student=user)
+  project = supervisor.project
+  deliverables = Deliverable.objects.filter(project=project)
+  marks=[project.id,0,0,0,0,0,0,0]
+  i=1
+  for deliverable in deliverables:
+    marks[i]=round(deliverable.score)
+    i+=1
+  return HttpResponse(json.dumps(marks))
+
+
+
+
+
