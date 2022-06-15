@@ -117,17 +117,19 @@ def get_request(request):
     req=Request.objects.get(id=data["id"])
     group_members=[]
     all_students= Student.objects.filter(request=req)
+    emails=[]
     for student in all_students:
-      group_members.append({
-        "name": student.student.first_name+ " " + student.student.last_name,
-        "roll_no":student.student.username,
-        "email": student.student.email,
-      })
+      emails.append(student.student.email)
+      # group_members.append({
+      #   "name": student.student.first_name+ " " + student.student.last_name,
+      #   "roll_no":student.student.username,
+      #   "email": student.student.email,
+      # })
     result={
       "id": req.id,
       "title": req.title,
       "description": req.details,
-      "group_members":group_members
+      "email": ",".join(emails)
     }
 
     return HttpResponse(json.dumps(result))
@@ -233,6 +235,7 @@ def get_project_details_supervisor(request):
 
     }
     result={
+      "id":data["id"],
       "title": project.title,
       "team_members": team_members,
       "supervisor": supervisor,
