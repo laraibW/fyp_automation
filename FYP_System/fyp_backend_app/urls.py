@@ -13,13 +13,9 @@ urlpatterns = [
     # jwt auth
     path('token/', jwt_views.TokenObtainPairView.as_view(), name="token_obtain_pair"), # returns access and refresh tokens
     path('token/verify/', jwt_views.TokenVerifyView.as_view(), name='token_verify'), # takes access token as post
-    # after social login success
-    # path('login-redirect/', views.social_login_redirect, name='login_redirect'), # returns token to client
-    # path('profile', views.user_profile),
-    # path('update_profile', views.update_profile),
-    # path("changePassword",views.ChangePassword)
     path('verify-login',login_verify),    #creating users
     path('get-all-supervisors',get_all_supervisors),
     path('get-all-students',get_all_students),
     path('change-password',change_password),
+    #path('addBulkUsers')
 ]

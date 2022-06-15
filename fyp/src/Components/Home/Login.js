@@ -3,8 +3,13 @@ import React, { useEffect, useState } from "react";
 import './home.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from './logo.png';
+
+
+import Cookies from 'universal-cookie';
+
 function Login(){
- 
+  const cookies = new Cookies();
+
   const [email,setEmail]=useState("");
    return(
       <div>
@@ -17,7 +22,10 @@ function Login(){
           <td>
           <img src={logo} className="App-logo" alt="logo" />
       <br/><br/>
-        Email: <input class="form-control" onChange={(e)=>{setEmail(e.target.value)}} type="text" placeholder="Enter Email" required/>    <br/> 
+        Email: <input class="form-control" onChange={(e)=>{
+          setEmail(e.target.value)
+          cookies.set('username',e.target.value);
+        }} type="text" placeholder="Enter Email" required/>    <br/> 
       
         Password: <input type="password" class="form-control" placeholder="Enter Password" required/>      
         <br/>

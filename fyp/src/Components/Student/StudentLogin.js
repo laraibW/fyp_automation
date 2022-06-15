@@ -41,10 +41,7 @@ function StudentLogin(){
       <h3 className="SPname1">List of Supervisors</h3>
       </div>
     <div >
-    {List.map((e)=>{
-       return (
-       <Supervisors key={e.key} name={e.name} details={e.details} email={e.email}/>
-     );})}
+    <Supervisors/>
     </div>
     </td></tr></table>
     </div>

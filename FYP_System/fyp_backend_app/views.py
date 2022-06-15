@@ -77,7 +77,7 @@ def change_password(request):
   try:
     obj = CustomUser.objects.get(username=username)
     obj.password=make_password(password)
-    obj.save
+    obj.save()
 
     return HttpResponse(json.dumps({"status": "Password Changed Successfully"}))
   except:
@@ -87,6 +87,64 @@ def change_password(request):
     }
     return HttpResponse(json.dumps(result))
 
+@csrf_exempt
+def add_student(request):
+  data=json.loads(request.body.decode("utf8"))
+  username=data['username']
+  password=data['password']
+  #role=data['role']
+  email=data['email']
+  first_name=data["first_name"]
+  last_name=data["last_name"]
+  session_year=data["session_year"]
+  try:
+    obj = CustomUser(username=username,
+                      user_type=2,
+                      first_name=first_name,
+                      last_name=last_name,
+                      email=email)
+    obj.password=make_password(password)
+    obj.save()
+    student=Student(student=obj, session_year=session_year)
+    student.save()
+    return HttpResponse(json.dumps({"status": "Student Created Successfully"}))
+  except:
+    #User is not Supervisor
+    result={
+       "status": "Error"
+    }
+    return HttpResponse(json.dumps(result))
+
+
+
+@csrf_exempt
+def add_supervisor(request):
+  data=json.loads(request.body.decode("utf8"))
+  username=data['username']
+  password=data['password']
+  #role=data['role']
+  email=data['email']
+  first_name=data["first_name"]
+  last_name=data["last_name"]
+  detail=data["detail"]
+  designation=data["designation"]
+  try:
+    obj = CustomUser(username=username,
+                      user_type=2,
+                      first_name=first_name,
+                      last_name=last_name,
+                      email=email)
+    obj.password=make_password(password)
+    obj.save()
+    supervisor=Supervisor(supervisor=obj, designation=designation, details=detail)
+    supervisor.save()
+    return HttpResponse(json.dumps({"status": "Supervisors Created Successfully"}))
+  except:
+    #User is not Supervisor
+    result={
+       "status": "Error"
+    }
+    return HttpResponse(json.dumps(result))
 
 
 
