@@ -30,7 +30,7 @@ function Admin(props){
 
 
   useEffect(()=>{
-    let res=fetch("/get-all-supervisor",{
+    let res=fetch("/get-all-supervisors",{
       method:"GET",
       headers:{"Content":"application/json"},
     }).then(data => data.json()).then((data)=> {

@@ -117,28 +117,25 @@ def get_request(request):
     req=Request.objects.get(id=data["id"])
     group_members=[]
     all_students= Student.objects.filter(request=req)
+    emails=[]
     for student in all_students:
-      group_members.append({
-        "name": student.student.first_name+ " " + student.student.last_name,
-        "roll_no":student.student.username,
-        "email": student.student.email,
-      })
+      emails.append(student.student.email)
+      # group_members.append({
+      #   "name": student.student.first_name+ " " + student.student.last_name,
+      #   "roll_no":student.student.username,
+      #   "email": student.student.email,
+      # })
     result={
       "id": req.id,
       "title": req.title,
       "description": req.details,
-      "group_members":group_members
+      "email": ",".join(emails)
     }
 
     return HttpResponse(json.dumps(result))
   except Exception as e:
     print("DEBUG : IN GET ALL REQUESTS ",e)
     return HttpResponse(json.dumps({"status": "No user found"}))
-
-
-
-
-
 
 
 @csrf_exempt
@@ -260,7 +257,7 @@ def get_marksheet_student(request):
   for deliverable in deliverables:
     marks[i]=round(deliverable.score)
     i+=1
-  return HttpResponse(json.dumps(marks))
+  return HttpResponse(json.dumps({"data":marks}))
 
 
 @csrf_exempt
@@ -280,6 +277,12 @@ def get_marksheet_supervisor(request):
     marksheet.append(marks)
   return HttpResponse(json.dumps(marksheet))
 
+@csrf_exempt
+def marksheet(request):
+  data=json.loads(request.body.decode("utf8"))
+  user=CustomUser.objects.get(username=data["username"])
+  supervisor=Supervisor.objects.get(supervisor=user)
+  all_data=data["data"]
 
 
 
