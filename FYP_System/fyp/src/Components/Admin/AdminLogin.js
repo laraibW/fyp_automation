@@ -71,8 +71,8 @@ function Admin(props){
             <tr>
                <td>  <div className='buttnD' >Remove</div>
                <div className='buttnA' >Add</div>
-               <div className='buttnC' >ChangePswd</div>
-               <div className='buttnR' >ResetPswd</div>
+               <div className='buttnC' >Change Password</div>
+               <div className='buttnR' >Reset Password</div>
                </td>
 
             </tr>
@@ -93,8 +93,8 @@ function Admin(props){
              <tr>
                <td>  <div className='buttnD' >Remove </div>
                <div className='buttnA' >Add</div>
-               <div className='buttnC' >ChangePswd</div>
-               <div className='buttnR' >ResetPswd</div>
+               <div className='buttnC' >Change password</div>
+               <div className='buttnR' >Reset password</div>
                </td>
 
             </tr>

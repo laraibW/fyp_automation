@@ -6,7 +6,7 @@ import {useEffect,useState} from 'react'
 function MyMarksSheet()
 {
   const cookies = new Cookies();
-  const [marksSheet,setmarksSheet] = useState()
+  const [marksSheet,setmarksSheet] = useState([])
   useEffect(()=>{
     let res=fetch("/students/marksheet",{
       method:"POST",

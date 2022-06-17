@@ -25,27 +25,73 @@ function App(props) {
         <Switch>
           <Route path="/" exact component={Login} />
           <Route path="/Login" exact component={Login} />
-          <Route path="/supervisorLogin" exact component={SupervisorLogin} />
+          {
+          localStorage.getItem('auth_token') !== null && <Route path="/supervisorLogin" exact component={SupervisorLogin} />
+          }
+          {
+            localStorage.getItem('auth_token') !== null &&
+            localStorage.getItem('user')=="student" &&
           <Route path="/studentLogin" exact component={StudentLogin} />
+          }
           <Route path="/FAQs" exact component={FAQs} />
+           {
+             localStorage.getItem('auth_token') !== null &&
+             localStorage.getItem('user')=="supervisor" &&
+
           <Route
             path="/ProjectDetails/:object"
             exact
             component={ProjectDetails}
           />
+           }
+           {
+             localStorage.getItem('auth_token') !== null &&
+             localStorage.getItem('user')=="student" &&
           <Route path="/SendRequestForm" exact component={SendRequestForm} />
+           }
+           {
+             localStorage.getItem('auth_token') !== null &&
+             localStorage.getItem('user')=="supervisor" &&
           <Route path="/Supervisors" exact component={Supervisors} />
+           }
+           { localStorage.getItem('auth_token') !== null &&
+           localStorage.getItem('user')=="student" &&
           <Route path="/SubmissionsDocs" exact component={SubmissionsDocs} />
-          <Route path="/ViewRequest/:request" exact component={ViewRequest} />
-          <Route path="/MarksSheetList" exact component={MarksSheetList} />
+}
+{
+  localStorage.getItem('auth_token') !== null &&
+  localStorage.getItem('user')=="supervisor" &&
+   <Route path="/ViewRequest/:request" exact component={ViewRequest} />
+}
+{
+  localStorage.getItem('auth_token') !== null &&
+  localStorage.getItem('user')=="supervisor" &&
+  <Route path="/MarksSheetList" exact component={MarksSheetList} />
+}
+{
+  localStorage.getItem('auth_token') !== null &&
+  localStorage.getItem('user')=="supervisor" &&
           <Route
             path="/DisplayMarksSheet"
             exact
             component={DisplayMarksSheet}
           />
+}
+{
+  localStorage.getItem('auth_token') !== null &&
+  localStorage.getItem('user')=="admin" &&
           <Route path="/AdminLogin" exact component={AdminLogin} />
+}
+{
+  localStorage.getItem('auth_token') !== null &&
+  localStorage.getItem('user')=="student" &&
           <Route path="/MyProject" exact component={MyProject} />
+}
+{
+  localStorage.getItem('auth_token') !== null &&
+  localStorage.getItem('user')=="student" &&
           <Route path="/MyMarksSheet" exact component={MyMarksSheet} />
+}
         </Switch>
       </Router>
     </Fragment>

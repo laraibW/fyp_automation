@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import './myproject.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import Cookies  from "universal-cookie";
 function ProjectDetails(){
+    const cookies = new Cookies();
     const [projectDetails,setprojectDetails]=useState([])
     useEffect(()=>{
-        let res=fetch("/get-all-students",{
-          method:"GET",
+        console.log("useEffect called");
+        let res=fetch("/students/project-details",{
+          method:"POST",
           headers:{"Content":"application/json"},
-          body: {}
+          body: JSON.stringify({"username":cookies.get('username')})
         }).then(data => data.json()).then((data)=> {
           //data=data.json()
           console.log(data)
@@ -31,27 +33,38 @@ function ProjectDetails(){
                         <td >
                         <div>
 
-                               <h4 className='heading'>Project ID: <font class="blockquote">Bcsf18M-112</font> </h4>
+                               <h4 className='heading'>Project ID: <font class="blockquote">{projectDetails.id}</font> </h4>
                             </div>
                             <hr className="hr"></hr>
                             <div>
-                               <h4 className='heading'>Project Title: <font class="blockquote">FYP Automation System</font> </h4>
+                               <h4 className='heading'>Project Title: <font class="blockquote">{projectDetails.title}</font> </h4>
+                            </div>
+                            <hr className="hr"></hr>
+                            <div>
+                               <h4 className='heading'>Supervisor Name: <font class="blockquote">{projectDetails.supervisor.name}</font></h4>
+                            </div>
+                            <hr className="hr"></hr>
+                            <div>
+                               <h4 className='heading'>Supervisor Email: <font class="blockquote">{projectDetails.supervisor.email}</font></h4>
                             </div>
                             <hr className="hr"></hr>
                             <div>
                                 <h4 className='heading'>
-                                    Team Leader: <font class="blockquote">Hamda Tariq</font>
+                                    Team Leader: <font class="blockquote">{projectDetails.team_members[1].name}</font>
                                 </h4>
 
                             </div>
                             <hr className="hr"></hr>
                             <div><h4 className='heading'>
                                 Team Members:
-                                 <font className="blockquote">
-                                        <div><li>Hamda Tariq</li></div>
-                                        <div><li>Sidra Tanveer</li></div>
-                                        <div><li>Larain Waheed</li></div>
-                                        <div><li>Abeera Khalid</li></div>
+                                <font className="blockquote">
+                                {projectDetails.team_members.map((teamMember) =>{
+                                    return(
+
+                                        <div><li>{teamMember.name}</li></div>
+
+                                    );
+                                })}
 
                                 </font>
                             </h4>
@@ -60,16 +73,19 @@ function ProjectDetails(){
                             <div><h4 className='heading'>
                                 Team Email Ids:
                                  <font className="blockquote">
-                                        <div><li>bcsf18m525@pucit.edu.ok</li></div>
-                                        <div><li>bcsf18m541@pucit.edu.ok</li></div>
-                                        <div><li>bcsf18m523@pucit.edu.ok</li></div>
-                                        <div><li>bcsf18m526@pucit.edu.ok</li></div>
+                                 {projectDetails.team_members.map((teamMember) =>{
+                                    return(
+
+                                        <div><li>{teamMember.email}</li></div>
+
+                                    );
+                                })}
                                 </font>
                             </h4>
                             </div>
                             <hr className="hr"></hr>
                             <div>
-                                <h4 className='heading'>Project Status:  <font class="blockquote">In Process</font>
+                                <h4 className='heading'>Project Status:  <font class="blockquote">{projectDetails.status}</font>
                                     </h4>
 
                             </div>

@@ -39,8 +39,8 @@ function DisplayMarksSheet(){
                        </tr>
                       );
                   })}
-                  
-            
+
+
              </table>
              <div>
              <div className='buttn2'>Submit Marks Sheet</div>

@@ -16,19 +16,19 @@ from .project_functions import start_project
 def create_request(request):
   try:
     data=json.loads(request.body.decode("utf8"))
-    student_usernames=[
-      data["username1"],
-      data["username2"],
-      data["username3"],
-      data["username4"],
-      data["username5"],
+    student_emails=[
+      data["user1"],
+      data["user2"],
+      data["user3"],
+      data["user4"],
+      data["user5"],
     ]
-    students_username_list = [x for x in student_usernames if x != '']
-    print(students_username_list)
+    students_email_list = [x for x in student_emails if x != '']
+    print(students_email_list)
     all_students=[]
     try:
-      for username in students_username_list:
-        user=CustomUser.objects.get(username= username)
+      for email in students_email_list:
+        user=CustomUser.objects.get(email= email)
         student=Student.objects.get(student=user)
         all_students.append(student)
       print("Students from db", all_students)
@@ -148,7 +148,7 @@ def do_request_actions(request):
       start_project(proj_request)
     elif data["status"].lower()=="reject":
       proj_request.request_status=2
-    return HttpResponse(json.dumps({"result": "Added Successfully"}))
+    return HttpResponse(json.dumps({"result": "Request Updated Successfully"}))
   except Exception as e:
     print("DEBUG : Error is ", str(e))
     return HttpResponse(json.dumps({"result": "Error!"}))
@@ -194,7 +194,8 @@ def get_project_details_student(request):
 
     }
     result={
-      "Title": project.title,
+      "id":project.id,
+      "title": project.title,
       "team_members": team_members,
       "supervisor": supervisor,
       "status": project_status[project.status],
@@ -230,6 +231,7 @@ def get_project_details_supervisor(request):
 
     }
     result={
+      "id":data["id"],
       "title": project.title,
       "team_members": team_members,
       "supervisor": supervisor,

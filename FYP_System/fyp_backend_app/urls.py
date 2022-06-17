@@ -1,7 +1,7 @@
 from rest_framework_simplejwt import views as jwt_views
 from django.views.defaults import page_not_found
 from django.urls import path, include
-from .views import login_verify, get_all_supervisors,get_all_students,change_password
+from .views import login_verify, get_all_supervisors,get_all_students,change_password,add_bulk_students,add_bulk_supervisors,delete_user
 from django.contrib.admin.sites import NotRegistered
 
 
@@ -17,5 +17,7 @@ urlpatterns = [
     path('get-all-supervisors',get_all_supervisors),
     path('get-all-students',get_all_students),
     path('change-password',change_password),
-    #path('addBulkUsers')
+    path('createStudents',add_bulk_students),
+    path('createSupervisors',add_bulk_supervisors),
+    path('deleteUser',delete_user)
 ]
