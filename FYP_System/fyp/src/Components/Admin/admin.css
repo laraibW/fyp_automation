@@ -1,6 +1,6 @@
 .dashboard
 {
-  
+
   text-align: center;
   color: white;
   font-size: 20px;
@@ -8,15 +8,15 @@
 
 .topBar{
     background-color: rgb(154, 141, 231);
-   
+
   }
-  
+
   .adminTable{
     background-color: gray;
     width: 100%;
     opacity: 2;
     margin: 15px;
-    border: 1px solid black; 
+    border: 1px solid black;
      box-shadow: 4px 4px 4px 4px rgb(191, 202, 202);
      font-size: 20px;
      font-family:cursive;
@@ -24,14 +24,14 @@
   }
   .tdata{
    text-align: center;
-   border: 1px solid black; 
+   border: 1px solid black;
    padding: 10px 10px 10px 10px;
   }
   .divv{
     margin:18px;
   }
   .buttnD{
-    background-color: rgb(202, 6, 6);
+    background-color: rgb(83, 81, 81);
     float:right;
     color: white;
     margin:10px;
@@ -41,7 +41,7 @@
     cursor: pointer;
   }
   .buttnA{
-    background-color: rgb(7, 71, 7);
+    background-color: rgb(83, 81, 81);
     float:right;
     color: white;
     margin:10px;
@@ -51,7 +51,7 @@
     cursor: pointer;
   }
   .buttnC{
-    background-color: rgb(128, 194, 23);
+    background-color: rgb(83, 81, 81);
     float:right;
     color: white;
     margin:10px;
@@ -62,7 +62,7 @@
   }
   .buttnR
   {
-    background-color: rgb(236, 106, 178);
+    background-color: rgb(83, 81, 81);
     float:right;
     color: white;
     margin:10px;

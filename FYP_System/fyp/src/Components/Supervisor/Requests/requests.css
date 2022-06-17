@@ -6,7 +6,7 @@
 }
 .dashboard
 {
-  
+
   text-align: center;
   color: white;
   font-size: 20px;
@@ -14,7 +14,7 @@
 
 .topBar{
     background-color: rgb(154, 141, 231);
-   
+
   }
   .data{
       text-align: left;
@@ -27,4 +27,6 @@
       font-family: serif;
       font-size: 20px;
   }
-  
+  .buttons {
+    margin-top:15px;
+  }

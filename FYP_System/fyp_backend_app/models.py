@@ -5,21 +5,7 @@ from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import User
 #from projects.models import  Request,Project
 
-# Create your models here.
 
-# class Student(AbstractUser):
-#     #user=models.OneToOneField(User, on_delete=models.CASCADE, null=False,)
-#     #username = models.CharField(max_length = 50, blank = False, null = False, unique = True)
-#     address = models.TextField(blank=True)
-#     #password = models.CharField(max_length=32)
-#     session_year=models.IntegerField()
-#     #project_id = models.OneToOneField(Projects, on_delete=models.DO_NOTHING)
-#     #session_year_id = models.ForeignKey(SessionYearModel, on_delete=models.CASCADE)
-#     score = models.IntegerField(blank=True)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
-#     Phone = models.CharField(blank=True, max_length=15)
-#     #objects = models.Manager()
 
 
 class CustomUser(AbstractUser):

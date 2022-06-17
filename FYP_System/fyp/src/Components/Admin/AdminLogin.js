@@ -60,7 +60,7 @@ function Admin(props){
               <td>
                 <div>
               <table className='adminTable'>
-              <th className='tdata'>Student Ids</th>
+              <th className='tdata'>Student Names</th>
               {StudentIds.map((e)=>{
                return(
                 <tr>
@@ -71,7 +71,6 @@ function Admin(props){
             <tr>
                <td>  <div className='buttnD' >Remove</div>
                <div className='buttnA' >Add</div>
-               <div className='buttnC' >Change Password</div>
                <div className='buttnR' >Reset Password</div>
                </td>
 
@@ -82,7 +81,7 @@ function Admin(props){
               <td>
               <div className='divv'>
               <table className='adminTable' >
-              <th className='tdata'>Supervisors Ids</th>
+              <th className='tdata'>Supervisors Names</th>
               {SupervisorsIds.map((e)=>{
                return(
                 <tr>
@@ -93,7 +92,6 @@ function Admin(props){
              <tr>
                <td>  <div className='buttnD' >Remove </div>
                <div className='buttnA' >Add</div>
-               <div className='buttnC' >Change password</div>
                <div className='buttnR' >Reset password</div>
                </td>
 

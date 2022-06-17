@@ -2,38 +2,44 @@
     text-align: left;
     color:rgb(67, 67, 75);
     font-family: serif;
+
   }
   .fnt{
     font-size: 25px;
-    font-size: 3.0vw;
+    font-size: 2.5vw;
   }
   .links
   {
     text-align: right;
   }
   .tableNavbar{
-   margin:0px 0px 0px 0px;
-   padding:0px 0px 0px 0px;
+   margin:auto;
+   padding:auto;
   }
    .link{
-     background-color: rgb(247, 212, 235);
+     background-color: rgb(130, 153, 199);
      border-radius: 4px;
-     padding:5px 5px 5px 5px;
+     margin-right: 8px;
+     padding:auto 5px auto 5px;
      font-size: 22px;
-    font-size: 1.5vw;
+     font-size: 1.5vw;
      font-weight: bold;
      font-family: serif;
    }
   .nav
   {
-    height:12vmin;
+
     border: 1px solid;
+
     background-color: rgb(207, 202, 202);
     border-color:rgb(238, 238, 230);
     box-shadow: 4px 4px 4px 4px rgb(126, 194, 194);
   }
   .logo{
-    height: 8vmin;
+
+    margin-left: 20px;
+    margin-right: 10px;
+    height: 9vmin;
     width: 10vmin;
     float: left;
   }

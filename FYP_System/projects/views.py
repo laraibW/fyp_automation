@@ -145,6 +145,7 @@ def do_request_actions(request):
     proj_request=Request.objects.get(id=data["request_id"])
     if data["status"].lower()=="accept":
       proj_request.request_status=1
+      proj_request.save()
       start_project(proj_request)
     elif data["status"].lower()=="reject":
       proj_request.request_status=2
@@ -178,6 +179,9 @@ def get_project_details_student(request):
     user=CustomUser.objects.get(username=data["username"])
     student=Student.objects.get(student=user)
     project=student.project
+    if not project:
+      return HttpResponse(json.dumps({"data": "Error"}))
+
     team_members=[]
     all_students=Student.objects.filter(project=project)
     print("DEBUG : ALL Students are :",all_students)
@@ -202,10 +206,10 @@ def get_project_details_student(request):
       "score": project.total_grade
     }
 
-    return HttpResponse(json.dumps(result))
+    return HttpResponse(json.dumps({"data":result}))
   except Exception as e:
     print("DEBUG : Error is ", str(e))
-    return HttpResponse(json.dumps({"status": "Error"}))
+    return HttpResponse(json.dumps({"data": "Error"}))
 
 @csrf_exempt
 def get_project_details_supervisor(request):

@@ -2,6 +2,7 @@
 import './navbar.css';
 import { Link } from 'react-router-dom';
 import logo from './logo.png';
+import pucit from './pucit.png';
 import Cookies  from "universal-cookie";
 function Header(){
     const cookies = new Cookies();
@@ -17,7 +18,7 @@ function Header(){
                     <tr>
                     <td className="title">
 
-                    <img src={logo} className="logo" alt="logo" />&nbsp; <font className="fnt"> Final Year Project Automation</font>
+                    <img src={pucit} className="logo" alt="logo" />&nbsp; <font className="fnt"> Final Year Project Automation</font>
 
                     </td>
 

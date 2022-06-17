@@ -101,8 +101,6 @@ function Login(){
         <center>
        <Link class="btn btn-success" onClick={()=>{
          verify_login()
-
-
        }}>
         Login</Link>
       </center>

@@ -18,6 +18,36 @@ function ViewRequest(props) {
       })
       return null;
   },[])
+  function request_action1()
+  {
+    fetch("supervisor/request-action",{
+      method:"POST",
+      headers:{"Content":"application/json"},
+      body :JSON.stringify({"status":"accept"}),
+    }
+    ).then(data=>data.json()).then((data)=>{
+      console.log(data);
+
+    })
+    window.location.replace("/SupervisorLogin")
+
+
+  }
+  function request_action2()
+  {
+    fetch("supervisor/request-action",{
+      method:"POST",
+      headers:{"Content":"application/json"},
+      body :JSON.stringify({"status":"reject"}),
+    }
+    ).then(data=>data.json()).then((data)=>{
+      console.log(data);
+
+    })
+    window.location.replace("/SupervisorLogin")
+
+
+  }
 
 
   return (
@@ -44,6 +74,11 @@ function ViewRequest(props) {
             </div>
           </div>
         </form>
+        <div class="buttons">
+        <button  class="btn btn-success" onClick={()=> request_action1()}>Accept</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-danger" onClick={()=> request_action2()}>Reject</button>
+        </div>
       </div>
     </div>
   );
